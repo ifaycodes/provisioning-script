@@ -1,0 +1,27 @@
+services:
+  dbsql:
+    image: mysql:8.0
+    restart: always
+    container_name: dbsql
+    env_file:
+      - .env
+    ports:
+      - "3306:3306"
+    networks:
+      - wordnet
+    volumes:
+      - /mnt/mysql-data:/var/lib/mysql
+
+  wordpress:
+    image: wordpress
+    restart: always
+    container_name: wordpress
+    ports:
+      - "80:80"
+    volumes:
+      - /srv/www:/var/www/html
+    networks:
+      - wordnet
+
+networks:
+  wordnet: {}
