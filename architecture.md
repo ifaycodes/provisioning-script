@@ -19,7 +19,7 @@ I start the application using Docker Compose, which manages the WordPress and My
 
 ## The Application Flow
 How the components connect: User → EC2 instance → Docker → WordPress + MySQL → EBS volume
-![alt text](image.png)
+![alt text](./images/image.png)
 A user accesses the website using a browser through HTTP (port 80) → The request reaches the EC2 instance → The request is forwarded to the WordPress container running inside Docker → WordPress queries the MySQL container for application data → MySQL stores its database files on the mounted EBS volume (/mnt/mysql-data) → The backup script exports the database using mysqldump → The backup file is uploaded to an S3 bucket for safe storage.
 
 ## To address the following questions
